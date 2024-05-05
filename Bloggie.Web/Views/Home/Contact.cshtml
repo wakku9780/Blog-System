@@ -1,0 +1,31 @@
+﻿<!-- Contact.cshtml -->
+@model Bloggie.Web.Models.ViewModels.ContactViewModel
+
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+ 
+
+<div class="tt">
+    <h1>Contact Us</h1>
+
+<form asp-controller="Home" asp-action="Contact" method="post">
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Message">Message</label>
+        <textarea class="form-control" id="Message" name="Message">@Model.Message</textarea>
+        <span asp-validation-for="Message" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>

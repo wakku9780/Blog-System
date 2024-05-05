@@ -44,6 +44,42 @@ namespace Bloggie.Web.Controllers
             return View();
         }
 
+        public IActionResult About()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Contact(ContactViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Process the form submission
+                // This is where you would handle the contact form submission logic
+
+                // Redirect to a confirmation page upon successful submission
+                return RedirectToAction("ContactConfirmation");
+            }
+            else
+            {
+                // If the model is not valid, redisplay the contact form with validation errors
+                return View("Contact", model);
+            }
+        }
+
+        public IActionResult ContactConfirmation()
+        {
+            return View();
+        }
+        [HttpGet] // This is important to ensure the Contact view is rendered via a GET request
+        public IActionResult Contact()
+        {
+            var model = new ContactViewModel();
+            return View(model);
+        }
+
+
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
